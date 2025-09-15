@@ -6,9 +6,12 @@ from main.forms import ProductForm
 
 # Create your views here.
 def show_main(request):
+    product_list = Product.objects.all()
+    
     context = {
         'name': 'Raihana Auni Zakia',
-        'class': 'PBP D'
+        'class': 'PBP D',
+        'product_list': product_list
     }
 
     return render(request, "main.html", context)
