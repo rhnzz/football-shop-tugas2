@@ -41,7 +41,6 @@ def show_json_by_id(request, product_id):
        return HttpResponse(json_data, content_type="application/json")
    except Product.DoesNotExist:
        return HttpResponse(status=404)
-   
 
 def create_product(request):
     form = ProductForm(request.POST or None)
@@ -54,11 +53,10 @@ def create_product(request):
     return render(request, "create_product.html", context)
 
 def show_product(request, id):
-    news = get_object_or_404(Product, pk=id)
-    news.increment_views()
+    product = get_object_or_404(Product, pk=id)
 
     context = {
-        'news': news
+        'product': product
     }
 
-    return render(request, "news_detail.html", context)
+    return render(request, "product_detail.html", context)

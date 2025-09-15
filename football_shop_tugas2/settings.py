@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "raihana-auni-footballshoptugas2.pbp.
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
-    "https://raihana-auni-footballnews.pbp.cs.ui.ac.id"
+    "https://raihana-auni-footballshoptugas2.pbp.cs.ui.ac.id"
 ]
 
 # Application definition
