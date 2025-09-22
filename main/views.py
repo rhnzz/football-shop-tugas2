@@ -22,10 +22,11 @@ def show_main(request):
         product_list = Product.objects.filter(user=request.user)
     
     context = {
-        'name': request.user.username,
+        'name':'Raihana Auni Zakia',
         'class': 'PBP D',
         'product_list': product_list,
-        'last_login': request.COOKIES.get('last_login', 'Never')
+        'last_login': request.COOKIES.get('last_login', 'Never'),
+        'user_login':request.user.username
     }
 
     return render(request, "main.html", context)
