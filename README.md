@@ -1,4 +1,4 @@
-========TUGAS 2=========
+======== TUGAS 2 =========
 - Tautan menuju aplikasi PWS yang sudah di-deploy: 
 https://raihana-auni-footballshoptugas2.pbp.cs.ui.ac.id/
 - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
@@ -30,7 +30,7 @@ menurut saya karena django menggunakan bahasa python dan pola arsitektur django 
 - Apakah ada feedback untuk asisten dosen tutorial 1 yang telah kamu kerjakan sebelumnya?
 tidak ada :D, sudah sangat baik penjelasan di tutorial 0 maupin 1
 
-========TUGAS 3=========
+======== TUGAS 3 =========
 - Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
 data delivery adalah proses transfer data dari satu lokasi ke lokasi lain. diperlukan data delivery karena mau menghubungkan setiap komponen-komponen agar bisa bertukar info, dan mau menyinkronkan data di seluruh database.
 - Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
@@ -44,7 +44,7 @@ pertama, membuat file html yg digunain sebagai template yg dipake buat kerangka 
 - Apakah ada feedback untuk asdos di tutorial 2 yang sudah kalian kerjakan?
 tidak ada 
 
-========TUGAS 4=========
+======== TUGAS 4 =========
 - Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
 AuthenticationForm adalah form dari django yang khusus buat login user, disediakan django buat mengecek apakah username dan password sudah sesuai apa belum. 
 kelebihannya adalah pertama menjadi lebih mudah untuk mengimplementasikan proses login user, kedua sudah terdapat validasi yang otomatis mengecek apakah username sudah terdaftar atau ppassword sudah sesuai. 
@@ -60,3 +60,20 @@ kekurangan cookies adalah tidak terlalu aman dan hanya bisa menyimpan data sedik
 ada resikonya yang harus di waspadai seperti pembajakan. django menangani dengan adanya proteksi menggunakan csrf_token dan menyediakan pengaturan agar hanya bisa melalui HTTPS yang telah terenkripsi.
 - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 pertama membuat form registrasi dan tampilannya (di viewspy dan html). lalu di-routing (di urls.py) agar bisa mengakses fungsi registrasi. kedua membuat fungsi login dan halaman loginnya, lalu di-routing. ketiga membuat fungsi agar user bisa logout, menambahkan tombol logout di main.html, lalu di-routing. keempat menambahkan decorator login_required untuk show_main dan show_product agar hanya bisa diakses jika sudah login. kelima di views.py ditambahkan last_login (cookies) untuk menyimpan timestamp kapan terakhir user login. lalu timestamp last_login tersebut ditampilkan di main (ditambahkan di show_main views.py dan di mai.html). lalu tambahkan di fungsi logout agar data last login dihapus. selanjutnya keenam di models.py kita import User, dan di class product kita tambahkan code untuk menghubungkan suatu product dengan seorang user, lalu models.py dimigrasi. ketujuh create_product di views.py ditambahkan code agar setiap produk yang dibuat akan otomatis terhubung dengan user yang membuatnya. lalu di show_main ditambakan kondisional jika filter hanya punya diri sendiri maka hanya muncul produk buatan sendiri. terakhir  di main.html dibuat tombol untuk memilih ingin melihat semua produk atau milik sendiri dan di setiap detail produk ditambahkan nama penjual, jika tidak ada maka anonymous
+
+======== TUGAS 5 =========
+- Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+prioritas paling diutamakan adalah "!important". prioritas selanjutnya itu adalah tergantung selectornya, yang pertama itu yang style nya ditulis langsung di atribut elemennya, urutan selanjutnya itu se;ector ID, urutan selanjutnya itu class, atribut, dan pseudo, dan urutan terakhir itu elemen dan pseudo. kalau ada yang sama, dipake yang ditulis paling bawah.
+- Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+sangat penting karena user itu beragam, ada yang pakai handphone, tablet, atau laptop, yang dimana ukuran layar devicenya berbeda-beda. kalau tidak responsive designnya, webnya akan sulit dibaca dan tidak nyaman dilihat. contoh yang sudah itu adalah web scele. dan contoh yang belum adalah https://thebiguglywebsite.com/ karena saat dibuka dilaptop dan diubah-ubah ukuran jendela browsernya tampilan webnya tidak mengikuti ukuran jendela browsernya (sumber web the ugly website: https://www.hostinger.com/id/tutorial/contoh-website-yang-buruk)
+- Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+margin adalah ruang kosong diluar border yang misahin antar elemen. border adalah garis diluar padding yang membungkus suatu elemen. padding adalah ruang kosong di dalam border yang memberi jarak antara konten dan border. cara implementasinya contohnya mau membuat banyak kotak yang setiap kotaknya berisi teks, disini saya tambahin padding agar disekitar teks nya ada ruang kosong, selanjutnya saya tambahin border untuk memberikan tampilan kotak antar teks yang berbeda agar tiap kotak terlihat dengan jelas, selanjutnya saya tambahin margin agar tidak saling nempel antar kotaknya
+- Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+flex box itu konsepnya untuk mengatur elemen elemen dalam 1 dimensi dan grid layout itu konespnya untuk mengatur elemen elemen dalam 2 dimensi. flex box itu untuk berguna untuk hal hal seperti mengatur agar elemen berada di tengah, memberikan spasi yang rata antar elemen, mengatur urutan elemen tanpa merubah file html nya. grid layout itu berguna untuk hal hal seperti mengatur layout yang kompleks, seperti navbar, sidebar, header dan yang lainnya
+- Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+pertama tambahkan fitur agar bisa merubah product dan menghapus produk. jadi disini membuat file html baru untuk halaman merubah produk, lalu menambahkan fungsi baru edit_product di views.py dan melakukan routing untuk edit_product di urls.py. lalu menambahkan fungsi baru delete_product di views.py dan melakukan routing untuk delete_product di urls.py.
+kedua menambahkan codingan di main.html untuk memunculkan tombol edit dan hapus di setiap produk
+ketiga menambahkan fitur navigation bar dengan membuat file html baru navbar.html, halaman navbar ini berisi tautan yang mengarah ke halaman lainnya. lalu di main.html di include navbar agar muncul di main.
+keempat menambahkan script cdn tailwind di base.html dan mengatur settings.py dengan menambahkan middleware whitenoise agar static file bisa diakses
+kelima membuat file global.css yang berada di folder static/css. file global.css ini ditambahkan untuk mengatur tampilan form, seperti tampilan kotak kotak isian form dibuat melengkung ujungnya, saat cursor hover berubah warna, saat focus (sedang diisi/diklik) berubah warna bordernya. lalu di base.html kita tambahkan file global.css nya agar bisa digunakan oleh django
+keenam merubah semua file html yang ada di main/templates dengan codingan html yang sudah menggunakan css dan yang sudah di styling jadi lebih menarik dan responsif

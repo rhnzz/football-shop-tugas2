@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 from main.models import Product
 from main.models import Employee
-from main.forms import ProductForm
+from main.forms import ProductForm, CarForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
@@ -24,6 +24,7 @@ def show_main(request):
     context = {
         'name':'Raihana Auni Zakia',
         'class': 'PBP D',
+        'npm': '2406495760',
         'product_list': product_list,
         'last_login': request.COOKIES.get('last_login', 'Never'),
         'user_login':request.user.username
@@ -85,6 +86,16 @@ def show_product(request, id):
 
     return render(request, "product_detail.html", context)
 
+def create_car(request):
+    form = CarForm(request.POST or None)
+    
+    if form.is_valid() and request.method=="POST":
+        form.save()
+        return redirect("main:show_main")
+    
+    context = {'form': form}
+    return render(request, "create_car.html, context")
+        
 def register(request):
     form = UserCreationForm()
 
@@ -118,3 +129,21 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    form = ProductForm(request.POST or None, instance=product)
+    if form.is_valid() and request.method == 'POST':
+        form.save()
+        return redirect('main:show_main')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
