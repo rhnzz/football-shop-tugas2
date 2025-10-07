@@ -77,3 +77,15 @@ ketiga menambahkan fitur navigation bar dengan membuat file html baru navbar.htm
 keempat menambahkan script cdn tailwind di base.html dan mengatur settings.py dengan menambahkan middleware whitenoise agar static file bisa diakses
 kelima membuat file global.css yang berada di folder static/css. file global.css ini ditambahkan untuk mengatur tampilan form, seperti tampilan kotak kotak isian form dibuat melengkung ujungnya, saat cursor hover berubah warna, saat focus (sedang diisi/diklik) berubah warna bordernya. lalu di base.html kita tambahkan file global.css nya agar bisa digunakan oleh django
 keenam merubah semua file html yang ada di main/templates dengan codingan html yang sudah menggunakan css dan yang sudah di styling jadi lebih menarik dan responsif
+
+======== TUGAS 6 =========
+- Apa perbedaan antara synchronous request dan asynchronous request?
+synchronous request adalah saat program menunggu response diterima, jadi di browser UI tidak akan responsif sampai request selesai. asynchronous request adalah saat program tidak perlu menunggu response terlebih dahulu, jadi program akan terus berjalan sambil menunggu response
+- Bagaimana AJAX bekerja di Django (alur request–response)?
+AJAX bekerja di django awalnya user klik tombol atau event lain yang memicu AJAX dan javascript mengumpulkan datanya. lalu HTTP request dikirim ke serverr django. lalu django melakukan URL routing. lalu view memproses request dan mengembalikan response. terakhir client menerima response.  
+- Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+menjadi lebih cepat, interaksi lebih lancar, bisa buat feature yang pogresif, client bisa memanggil beberapa endpoint bersamaan.
+- Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+memakai HTTPS, menggunakan method POST, proteksi dari CSRFToken, validasi di side server, menggunakan autentikasi bawaan django, proteksi XSS, CAPCTHA, verifikasi email. 
+- Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?
+website menjadi lebih responsif dan interaktif, user jaditidak perlu menggunu lama untuk loading halaman, user jadi tiddak perlu refresh halaman dengan manual.
